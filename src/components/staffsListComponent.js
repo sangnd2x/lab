@@ -18,8 +18,8 @@ class StaffsList extends Component {
     render() {
         const staff = this.props.staff.map(staff => {
             return (
-                <div key={staff.id} className="col-12 col-md-6 col-lg-3 m-1">
-                    <Card onClick={() => this.selectedStaff(staff)} className="style">
+                <div key={staff.id} className="col-12 col-md-5 col-lg-3 m-1">
+                    <Card onClick={() => this.selectedStaff(staff)} className="staff">
                         <CardTitle>{staff.name}</CardTitle>
                     </Card>
                 </div>
@@ -28,10 +28,10 @@ class StaffsList extends Component {
 
         return (
             <div className="container">
-                <div className="row center">
+                <div className="row justify-content-between">
                     {staff}
                 </div>
-                <div className="row">
+                <div className="row justify-content-around m-2">
                     <StaffsInfo selectedStaff={ this.state.selectedStaff } />
                 </div>
             </div>

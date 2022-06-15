@@ -22,9 +22,9 @@ class StaffsInfo extends Component{
             
             return (
                 <div className="container">
-                    <div className="row">
-                        <Card className="col-12 col-md-6 col-lg-4">
-                            <CardTitle>{staff.name}</CardTitle>
+                    <div className="row ">
+                        <Card className="col-12 col-md-12 col-lg-12 staff-info">
+                            <CardTitle>{staff.name.toUpperCase()}</CardTitle>
                             <CardText>Ngày sinh: {dateFormat(birdthDate, "dd/mm/yyyy")}</CardText>
                             <CardText>Ngày vào công ty: {dateFormat(joinDate, "dd/mm/yyyy")}</CardText>
                             <CardText>Phòng ban: {staff.department.name}</CardText>
