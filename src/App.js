@@ -7,11 +7,11 @@ import { DISHES } from './shared/dishes';
 
 class App extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       dishes: DISHES
-    };
+    }
   }
 
   render() {
@@ -28,4 +28,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
