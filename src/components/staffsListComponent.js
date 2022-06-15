@@ -18,8 +18,8 @@ class StaffsList extends Component {
     render() {
         const staff = this.props.staff.map(staff => {
             return (
-                <div key={staff.id} className="col-12 col-md-6 col-lg-4 m-0.5">
-                    <Card onClick={() => this.selectedStaff(staff)}>
+                <div key={staff.id} className="col-12 col-md-6 col-lg-3 m-1">
+                    <Card onClick={() => this.selectedStaff(staff)} className="style">
                         <CardTitle>{staff.name}</CardTitle>
                     </Card>
                 </div>
@@ -28,7 +28,7 @@ class StaffsList extends Component {
 
         return (
             <div className="container">
-                <div className="row">
+                <div className="row center">
                     {staff}
                 </div>
                 <div className="row">
