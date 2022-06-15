@@ -8,7 +8,7 @@ class DishDetailed extends Component {
 
     render() {
         const dish = this.props.dishSelected
-        const DATE_OPTIONS = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+        const DATE_OPTIONS = { year: 'numeric', month: 'short', day: 'numeric' };
 
 
         if (dish == null) {
