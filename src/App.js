@@ -2,17 +2,14 @@ import React, { Component } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import './App.css';
 import { STAFFS } from './staffs';
-import StaffsList from './components/staffsListComponent'
-
+import StaffsList from './components/staffsListComponent';
+import ColumnDisplay from './components/columnDisplayComponent'
 
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      staffs: STAFFS
-    }
   }
   
   render() {
@@ -23,7 +20,7 @@ class App extends Component {
             <NavbarBrand href="/">Ứng dụng quản lý nhân sự v1.0</NavbarBrand>
           </div>
         </Navbar>
-        <StaffsList staff={this.state.staffs} />
+        <ColumnDisplay />
       </div>
     );
   }

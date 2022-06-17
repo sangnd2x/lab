@@ -1,0 +1,53 @@
+import { number } from "prop-types";
+import React, { Component } from "react";
+import StaffsList from "./staffsListComponent";
+import { STAFFS } from "../staffs";
+
+class ColumnDisplay extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            staffs: STAFFS,
+            numberOfColumn: 3
+        };
+
+        // this.handleOption = this.handleOption.bind(this)
+    }
+
+    handleOption(e) {
+        e.preventDefault();
+        this.setState({ numberOfColumn: e.target.value });
+    }
+
+    render() {
+        const btn = 
+            <div className="container">
+                <div className="row">
+                    <select id="dropdown" onChange={(e) => {
+                        this.handleOption(e)
+                        console.log(this.state.numberOfColumn)
+                }}>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                </select>
+                </div>
+                <div>Number of Column is: {this.state.numberOfColumn}</div>
+            
+            </div>
+        
+        return (
+            <div className="container">
+                <div className="row">
+                    {btn}
+                </div>
+                <div className="row">
+                    <StaffsList column={this.state.numberOfColumn} staff={this.state.staffs} />
+                </div>
+            </div>
+        )
+    }
+}
+
+export default ColumnDisplay;

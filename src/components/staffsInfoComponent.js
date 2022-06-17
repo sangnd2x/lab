@@ -9,8 +9,6 @@ class StaffsInfo extends Component{
 
     render() {
         const staff = this.props.selectedStaff
-        
-        console.log(staff)
 
         if (staff == null) {
             return (

@@ -16,14 +16,17 @@ class StaffsList extends Component {
     }
 
     render() {
+        console.log(this.props.column);
+
+
         const staff = this.props.staff.map(staff => {
             return (
-                <div key={staff.id} className="col-12 col-md-5 col-lg-3 m-1">
+                <div key={staff.id} className={"col-12 col-md-6 col-lg-" + (12/this.props.column)}>
                     <Card onClick={() => this.selectedStaff(staff)} className="staff">
                         <CardTitle>{staff.name}</CardTitle>
                     </Card>
                 </div>
-            )
+            );
         });
 
         return (
