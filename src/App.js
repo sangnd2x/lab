@@ -5,6 +5,7 @@ import { STAFFS } from './staffs';
 import StaffsList from './components/staffsListComponent'
 
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar dark color="primary">
+        <Navbar dark color="success">
           <div className="container">
             <NavbarBrand href="/">Ứng dụng quản lý nhân sự v1.0</NavbarBrand>
           </div>

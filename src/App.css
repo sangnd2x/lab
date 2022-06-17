@@ -13,6 +13,10 @@
   transform: translate(-3px, -3px);
 }
 
+.staff:active {
+  background-color: green;
+}
+
 .staff-info {
   padding: 25px;
   margin-top: 20px;
