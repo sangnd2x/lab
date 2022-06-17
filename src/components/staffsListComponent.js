@@ -16,7 +16,6 @@ class StaffsList extends Component {
     }
 
     render() {
-        console.log(this.props.column);
 
         const staff = this.props.staff.map(staff => {
             return (
