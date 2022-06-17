@@ -14,7 +14,7 @@
 }
 
 .staff:active {
-  background-color: green;
+  background-color: rgb(0,204,0);
 }
 
 .staff-info {
