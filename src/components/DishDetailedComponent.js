@@ -3,25 +3,25 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from "re
 
 class DishDetailed extends Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     render() {
-        const dish = this.props.dishSelected
-        const DATE_OPTIONS = { year: 'numeric', month: 'short', day: 'numeric' };
+        const dish = this.props.dish
+        const DATE_OPTIONS = { year: 'numeric', month: 'short', day: '2-digit' };
 
 
         if (dish == null) {
-            return (<div></div>)
+            return (<div></div>);
         } else {
 
             const comment = dish.comments.map(comment => {
                 return (
-                    <div  key={comment.id}>
+                    <div key={comment.id}>
                         <p>{comment.comment}</p>
                         <p>-- {comment.author}, {new Date(comment.date).toLocaleDateString('en-US', DATE_OPTIONS)}</p>
                     </div>
-                )
+                );
             })
 
             return (
@@ -42,7 +42,7 @@ class DishDetailed extends Component {
                         </div>
                     </div>
                 </div>
-            )
+            );
         }
     }
 }
