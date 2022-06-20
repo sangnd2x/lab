@@ -1,50 +1,64 @@
-import React, { Component } from "react";
+import React from "react";
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from "reactstrap";
 
-class DishDetailed extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        const dish = this.props.dish
-        const DATE_OPTIONS = { year: 'numeric', month: 'short', day: '2-digit' };
+function RenderComment({comment}) {
+    const DATE_OPTIONS = { year: 'numeric', month: 'short', day: '2-digit' };
 
 
-        if (dish == null) {
-            return (<div></div>);
-        } else {
-
-            const comment = dish.comments.map(comment => {
-                return (
-                    <div key={comment.id}>
-                        <p>{comment.comment}</p>
-                        <p>-- {comment.author}, {new Date(comment.date).toLocaleDateString('en-US', DATE_OPTIONS)}</p>
-                    </div>
-                );
-            })
-
+    if (comment == null) {
+        return (<div></div>);
+    } else {
+        const comments = comment.map(cmt => {
             return (
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12 col-md-5 m-1">
-                            <Card>
-                                <CardImg width="100%" src={dish.image} alt={dish.name}></CardImg>
-                                <CardBody>
-                                    <CardTitle>{dish.name}</CardTitle>
-                                    <CardText>{dish.description}</CardText>
-                                </CardBody>
-                            </Card>
-                        </div>
-                        <div className="col-12 col-md-5 m-1">
-                            <h2>Comments</h2>
-                            {comment}
-                        </div>
+                
+                    <div key={cmt.id}>
+                        <p>{cmt.comment}</p>
+                        <p>-- {cmt.author}, {new Date(cmt.date).toLocaleDateString('en-US', DATE_OPTIONS)}</p>
                     </div>
-                </div>
+            
             );
-        }
+        })
+
+        return (
+            <div className="col-12 col-md-5 m-1">
+                {comments}
+            </div>
+        );
     }
 }
+
+function RenderDish({dish}) {
+    if (dish == null) {
+        return (<div></div>);
+    } else {
+        return (
+            <div className="col-12 col-md-5 m-1">
+                <Card>
+                    <CardImg width="100%" src={dish.image} alt={dish.name}></CardImg>
+                    <CardBody>
+                        <CardTitle>{dish.name}</CardTitle>
+                        <CardText>{dish.description}</CardText>
+                    </CardBody>
+                </Card>
+            </div>
+        );
+    }
+}
+
+const DishDetailed = (props) => {
+    if (props.dish != null) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <RenderDish dish={props.dish} />
+                    <RenderComment comment={props.dish.comments} />
+                </div>
+            </div>
+        );
+    } else {
+        return (<div></div>)
+    }
+}
+
 
 export default DishDetailed
