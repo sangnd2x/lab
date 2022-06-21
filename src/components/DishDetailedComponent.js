@@ -10,12 +10,10 @@ function RenderComment({comment}) {
     } else {
         const comments = comment.map(cmt => {
             return (
-                
-                    <div key={cmt.id}>
-                        <p>{cmt.comment}</p>
-                        <p>-- {cmt.author}, {new Date(cmt.date).toLocaleDateString('en-US', DATE_OPTIONS)}</p>
-                    </div>
-            
+                <div key={cmt.id}>
+                    <p>{cmt.comment}</p>
+                    <p>-- {cmt.author}, {new Date(cmt.date).toLocaleDateString('en-US', DATE_OPTIONS)}</p>
+                </div>
             );
         })
 
@@ -60,5 +58,4 @@ const DishDetailed = (props) => {
     }
 }
 
-
-export default DishDetailed
+export default DishDetailed;
