@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Home from './HomeComponent';
+import About from './AboutComponent';
 import Menu from './MenuComponent';
 import DishDetailed from './DishDetailedComponent';
 import Contact from './ContactComponent';
@@ -49,6 +50,7 @@ class Main extends Component {
               <Switch>
                   <Route path="/home" component={HomePage} />
                   <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes} />} />
+                  <Route path="/aboutus" component={() => <About leaders={this.state.leaders} />} />
                   <Route path="/menu/:dishId" component={DishWithId} />
                   <Route exact path="/contactus" component={Contact} />
                   <Redirect to="/home" />
@@ -59,4 +61,4 @@ class Main extends Component {
     }
 }
 
-export default Main
+export default Main;
