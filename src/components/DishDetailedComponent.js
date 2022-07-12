@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Col, Row } from "reactstrap";
+import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Loading } from "./LoadingComponent";
 
 const required = val => val && val.length;
 const maxLength = len => val => !(val) || (val.length <= len);
@@ -27,7 +28,7 @@ class CommentForm extends Component {
 
     handleSubmit(value) {
         this.toggleForm();
-        alert("Current State: " + JSON.stringify(value));
+        this.props.addComment(this.props.dishId, value.rating, value.author, value.comment);
     }
 
     render() {
@@ -55,7 +56,7 @@ class CommentForm extends Component {
                             <Row className="form-group">
                                 <Col md={12}>Your Name</Col>
                                 <Col md={12}>
-                                    <Control.text model=".yourname" name="yourname" className="form-control"
+                                    <Control.text model=".author" name="author" className="form-control"
                                         placeholder="Your name"
                                         validators={{
                                             required,
@@ -92,7 +93,7 @@ class CommentForm extends Component {
     }
 }
 
-function RenderComment({comment}) {
+function RenderComment({comment, addComment, dishId}) {
     const DATE_OPTIONS = { year: 'numeric', month: 'short', day: '2-digit' };
 
     if (comment == null) {
@@ -110,7 +111,7 @@ function RenderComment({comment}) {
         return (
             <div className="col-12 col-md-5 m-1">
                 {comments}
-                <CommentForm />
+                <CommentForm dishId={dishId} addComment={addComment} />
             </div>
         );
     }
@@ -135,7 +136,23 @@ function RenderDish({dish}) {
 }
 
 const DishDetailed = (props) => {
-    if (props.dish != null) {
+    if (props.isLoading) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <Loading />
+                </div>
+            </div>
+        );
+    } else if (props.errMess) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <h4>{props.errMess}</h4>
+                </div>
+            </div>
+        );
+    } else if (props.dish != null) {
         return (
             <div className="container">
                 <div className="row">
@@ -153,7 +170,9 @@ const DishDetailed = (props) => {
                         <hr/>
                     </div>
                     <RenderDish dish={props.dish} />
-                    <RenderComment comment={props.comments} />
+                    <RenderComment comment={props.comments}
+                        addComment={props.addComment}
+                        dishId={props.dish.id} />
                 </div>
             </div>
         );
