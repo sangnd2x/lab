@@ -29,7 +29,7 @@ class CommentForm extends Component {
 
     handleSubmit(value) {
         this.toggleForm();
-        this.props.addComment(this.props.dishId, value.rating, value.author, value.comment);
+        this.props.postComment(this.props.dishId, value.rating, value.author, value.comment);
     }
 
     render() {
@@ -94,7 +94,7 @@ class CommentForm extends Component {
     }
 }
 
-function RenderComment({comment, addComment, dishId}) {
+function RenderComment({comment, postComment, dishId}) {
     const DATE_OPTIONS = { year: 'numeric', month: 'short', day: '2-digit' };
 
     if (comment == null) {
@@ -112,7 +112,7 @@ function RenderComment({comment, addComment, dishId}) {
         return (
             <div className="col-12 col-md-5 m-1">
                 {comments}
-                <CommentForm dishId={dishId} addComment={addComment} />
+                <CommentForm dishId={dishId} postComment={postComment} />
             </div>
         );
     }
@@ -172,7 +172,7 @@ const DishDetailed = (props) => {
                     </div>
                     <RenderDish dish={props.dish} />
                     <RenderComment comment={props.comments}
-                        addComment={props.addComment}
+                        postComment={props.postComment}
                         dishId={props.dish.id} />
                 </div>
             </div>
